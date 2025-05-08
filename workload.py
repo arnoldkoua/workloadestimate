@@ -255,7 +255,7 @@ elif mode == "Agents Techniques":
 
                 df = task_df.copy()
                 multiplicateurs = {
-                    "projet": nb_projets,
+                    "projet": nb_projet,
                     "coopérative": nb_coop,
                     "structure": nb_struc,
                     # "agent_op": nb_agents_ope,
