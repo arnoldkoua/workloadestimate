@@ -108,10 +108,10 @@ if mode == "Responsables Projet":
                 if charge_pct <= 40:
                     statut = "✅ Charge faible. Il reste de la marge pour ajouter d'autres responsabilités."
                     nb_requi = 1
-                elif charge_pct <= 95:
+                elif charge_pct <= 100:
                     statut = "➡️ Charge modérée. Suivi recommandé si d'autres tâches sont attendues."
                     nb_requi = 1
-                elif charge_pct <= 130:
+                elif charge_pct <= 150:
                     statut = "🔶 Charge élevée. Un ajustement organisationnel peut être envisagé."
                     nb_requi = 1
                 else:
@@ -252,6 +252,7 @@ elif mode == "Agents Techniques":
                 nb_struc = row["Nombre de structures"]
                 nb_alpha = row["Nombre de centres alpha"]
                 nb_agents_ope = row["Nombre d'agents opérationnels"]
+                nb_club_lec = row["Nombre club de lecture"]
 
                 df = task_df.copy()
                 multiplicateurs = {
@@ -260,6 +261,7 @@ elif mode == "Agents Techniques":
                     "structure": nb_struc,
                     # "agent_op": nb_agents_ope,
                     "alpha": nb_alpha,
+                    "lecture": nb_club_lec,
                     "unique": 1
                 }
                 df["Temps total (heures)"] = (
@@ -278,10 +280,10 @@ elif mode == "Agents Techniques":
                 if charge_pct <= 40:
                     statut = "✅ Charge faible. Il reste de la marge pour ajouter d'autres missions."
                     nb_requis = 1
-                elif charge_pct <= 95:
+                elif charge_pct <= 100:
                     statut = "➡️ Charge modérée. Un suivi peut être utile."
                     nb_requis = 1
-                elif charge_pct <= 130:
+                elif charge_pct <= 150:
                     statut = "🔶 Charge élevée. Réévaluation possible."
                     nb_requis = 1
                 else:
@@ -297,6 +299,7 @@ elif mode == "Agents Techniques":
                     "Nombre de structures": nb_struc,
                     "Nombre de centres alpha": nb_alpha,
                     "Nombre d'agents opérationnels": nb_agents_ope,
+                    "Nombre club de lecture": nb_club_lec,
                     "Heures totales": total_heure,
                     "% de charge": round(charge_pct, 1),
                     "Statut": statut,
