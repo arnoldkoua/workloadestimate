@@ -289,7 +289,7 @@ elif mode == "Agents Techniques":
                 elif charge_pct <= 85:
                     statut = "➡️ Charge modérée. Un suivi peut être utile."
                     nb_requis = 1
-                elif charge_pct <= 105:
+                elif charge_pct <= 100:
                     statut = "🔶 Charge normale. Réévaluation possible."
                     nb_requis = 1
                 else:
