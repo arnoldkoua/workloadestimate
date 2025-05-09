@@ -290,10 +290,10 @@ elif mode == "Agents Techniques":
                     statut = "➡️ Charge modérée. Un suivi peut être utile."
                     nb_requis = 1
                 elif charge_pct <= 100:
-                    statut = "🔶 Charge élevée. Réévaluation possible."
+                    statut = "🔶 Charge normale. Réévaluation possible."
                     nb_requis = 1
                 else:
-                    statut = "⚠️ Surcharge détectée. Recrutement conseillé : AT supplémentaire(s)."
+                    statut = "⚠️ Charge élevée. Recrutement conseillé : AT supplémentaire(s)."
                     nb_requis = int(total_heure / heures_max_mensuelles + 0.99)
 
                 results.append({
@@ -307,6 +307,8 @@ elif mode == "Agents Techniques":
                     "Nombre de centres alpha": nb_alpha,
                     "Nombre d'agents opérationnels": nb_agents_ope,
                     "Nombre club de lecture": nb_club_lec,
+                    "Nombre de cp": nb_cl,
+                    "Nombre de session": nb_recycl,
                     "Heures totales": total_heure,
                     "% de charge": round(charge_pct, 1),
                     "Statut": statut,
