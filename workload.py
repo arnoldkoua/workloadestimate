@@ -325,6 +325,40 @@ elif mode == "Agents Techniques":
 
             st.subheader("📊 Temps total par tâche")
             with st.expander("ℹ️ Section - Temps total par tâche"):
+                if charges_par_at:
+                    agent_ids = ["Tous"] + list(charges_par_at.keys())
+                    selected_at = st.selectbox("Sélectionner un agent pour voir le tableau des tâches :", agent_ids)
+            
+                    if selected_at == "Tous":
+                        df_concat = pd.concat(charges_par_at.values(), ignore_index=True)
+                        total_per_task = df_concat.groupby("Tâche")["Temps total (heures)"].sum().reset_index()
+                        total_per_task = total_per_task.sort_values("Temps total (heures)")
+                        title = "Tableau du temps total par tâche - Tous les agents"
+                    else:
+                        selected_df = charges_par_at[selected_at]
+                        total_per_task = selected_df.groupby("Tâche")["Temps total (heures)"].sum().reset_index()
+                        total_per_task = total_per_task.sort_values("Temps total (heures)")
+                        title = f"Tableau du temps total par tâche - Agent {selected_at}"
+            
+                    st.markdown(f"### {title}")
+                    st.dataframe(total_per_task, use_container_width=True)
+            
+                    # Création du fichier Excel en mémoire
+                    output = BytesIO()
+                    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+                        total_per_task.to_excel(writer, index=False, sheet_name="Temps par tâche")
+                    output.seek(0)
+            
+                    # Bouton de téléchargement
+                    st.download_button(
+                        label="📥 Télécharger le tableau au format Excel",
+                        data=output,
+                        file_name="temps_total_par_tache.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    )
+
+            st.subheader("📊 Temps total par tâche")
+            with st.expander("ℹ️ Section - Temps total par tâche"):
                 # Only display chart options if we have data
                 if charges_par_at:
                     agent_ids = ["Tous"] + list(charges_par_at.keys())
