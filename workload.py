@@ -108,10 +108,10 @@ if mode == "Responsables Projet":
                 if charge_pct <= 40:
                     statut = "✅ Charge faible. Il reste de la marge pour ajouter d'autres responsabilités."
                     nb_requi = 1
-                elif charge_pct <= 100:
+                elif charge_pct <= 85:
                     statut = "➡️ Charge modérée. Suivi recommandé si d'autres tâches sont attendues."
                     nb_requi = 1
-                elif charge_pct <= 150:
+                elif charge_pct <= 100:
                     statut = "🔶 Charge élevée. Un ajustement organisationnel peut être envisagé."
                     nb_requi = 1
                 else:
@@ -286,10 +286,10 @@ elif mode == "Agents Techniques":
                 if charge_pct <= 40:
                     statut = "✅ Charge faible. Il reste de la marge pour ajouter d'autres missions."
                     nb_requis = 1
-                elif charge_pct <= 100:
+                elif charge_pct <= 85:
                     statut = "➡️ Charge modérée. Un suivi peut être utile."
                     nb_requis = 1
-                elif charge_pct <= 150:
+                elif charge_pct <= 100:
                     statut = "🔶 Charge élevée. Réévaluation possible."
                     nb_requis = 1
                 else:
