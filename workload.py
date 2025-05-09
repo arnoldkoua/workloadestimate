@@ -249,6 +249,8 @@ elif mode == "Agents Techniques":
                 agent_id = row["Matricule"]
                 nb_projet = row["Nombre de projets"]
                 nb_pac = row["Nombre de projets PAC"]
+                nb_cl = row["Nombre de cp"]
+                nb_recycl = row["Nombre de session"]
                 nb_coop = row["Nombre de coopératives"]
                 nb_struc = row["Nombre de structures"]
                 nb_alpha = row["Nombre de centres alpha"]
@@ -264,6 +266,8 @@ elif mode == "Agents Techniques":
                     "alpha": nb_alpha,
                     "lecture": nb_club_lec,
                     "pac": nb_pac,
+                    "recycl": nb_recycl,
+                    "cp": nb_cl,
                     "unique": 1
                 }
                 df["Temps total (heures)"] = (
@@ -344,18 +348,6 @@ elif mode == "Agents Techniques":
                     st.dataframe(total_per_task, use_container_width=True)
             
                     # Création du fichier Excel en mémoire
-                    output = BytesIO()
-                    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-                        total_per_task.to_excel(writer, index=False, sheet_name="Temps par tâche")
-                    output.seek(0)
-            
-                    # Bouton de téléchargement
-                    st.download_button(
-                        label="📥 Télécharger le tableau au format Excel",
-                        data=output,
-                        file_name="temps_total_par_tache.xlsx",
-                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                    )
 
             st.subheader("📊 Temps total par tâche")
             with st.expander("ℹ️ Section - Temps total par tâche"):
