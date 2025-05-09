@@ -108,10 +108,10 @@ if mode == "Responsables Projet":
                 if charge_pct <= 40:
                     statut = "✅ Charge faible. Il reste de la marge pour ajouter d'autres responsabilités."
                     nb_requi = 1
-                elif charge_pct <= 85:
+                elif charge_pct <= 100:
                     statut = "➡️ Charge modérée. Suivi recommandé si d'autres tâches sont attendues."
                     nb_requi = 1
-                elif charge_pct <= 100:
+                elif charge_pct <= 150:
                     statut = "🔶 Charge élevée. Un ajustement organisationnel peut être envisagé."
                     nb_requi = 1
                 else:
@@ -248,6 +248,7 @@ elif mode == "Agents Techniques":
                 br = row["BR"]
                 agent_id = row["Matricule"]
                 nb_projet = row["Nombre de projets"]
+                nb_pac = row["Nombre de projets PAC"]
                 nb_coop = row["Nombre de coopératives"]
                 nb_struc = row["Nombre de structures"]
                 nb_alpha = row["Nombre de centres alpha"]
@@ -262,6 +263,7 @@ elif mode == "Agents Techniques":
                     # "agent_op": nb_agents_ope,
                     "alpha": nb_alpha,
                     "lecture": nb_club_lec,
+                    "pac": nb_pac,
                     "unique": 1
                 }
                 df["Temps total (heures)"] = (
@@ -280,10 +282,10 @@ elif mode == "Agents Techniques":
                 if charge_pct <= 40:
                     statut = "✅ Charge faible. Il reste de la marge pour ajouter d'autres missions."
                     nb_requis = 1
-                elif charge_pct <= 85:
+                elif charge_pct <= 100:
                     statut = "➡️ Charge modérée. Un suivi peut être utile."
                     nb_requis = 1
-                elif charge_pct <= 100:
+                elif charge_pct <= 150:
                     statut = "🔶 Charge élevée. Réévaluation possible."
                     nb_requis = 1
                 else:
@@ -295,6 +297,7 @@ elif mode == "Agents Techniques":
                     "Matricule": agent_id,
                     "Nombre total d'heures de travail/mois": heures_max_mensuelles,
                     "Nombre de projets": nb_projet,
+                    "Nombre de projets PAC": nb_pac,
                     "Nombre de coopératives": nb_coop,
                     "Nombre de structures": nb_struc,
                     "Nombre de centres alpha": nb_alpha,
